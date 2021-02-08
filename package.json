@@ -16,9 +16,10 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "npm run build -- --watch",
-    "build": "rm -rf dist && tsup src/index.ts --dts --format cjs,esm",
+    "build": "rm -rf dist && tsup src/index.ts --dts",
     "example:dev": "npm -C example run dev",
-    "example:build": "npm -C example run build"
+    "example:build": "npm -C example run build",
+    "postinstall": "cd example && npm install"
   },
   "peerDependencies": {
     "vite": ">=2.0.0-beta.65"

@@ -1,9 +1,12 @@
 import { Plugin } from 'vite';
 
-const createPlugin = (): Plugin => {
+export const ViteStarter = (): Plugin => {
   return {
     name: 'vite-plugin-typescript-starter',
+    // plugin code: https://vitejs.dev/guide/api-plugin.html
   };
 };
 
-export default createPlugin;
+export default {
+  ViteStarter,
+};
