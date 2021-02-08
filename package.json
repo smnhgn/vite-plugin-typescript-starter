@@ -15,8 +15,10 @@
   },
   "main": "dist/index.js",
   "scripts": {
-    "dev": "npm run build -- --watch",
-    "build": "rm -rf dist && tsup src/index.ts --dts",
+    "dev": "concurrently \"npm run plugin:dev\" \"npm run example:dev\"",
+    "build": "npm run plugin:build && npm run example:build",
+    "plugin:dev": "tsup src/index.ts --dts --watch",
+    "plugin:build": "tsup src/index.ts --dts",
     "example:dev": "npm -C example run dev",
     "example:build": "npm -C example run build",
     "postinstall": "cd example && npm install"
@@ -25,6 +27,7 @@
     "vite": ">=2.0.0-beta.65"
   },
   "devDependencies": {
+    "concurrently": "^5.3.0",
     "tsup": "^3.12.1",
     "typescript": "^4.1.3",
     "vite": "^2.0.0-beta.65"
